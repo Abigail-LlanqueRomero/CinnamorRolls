@@ -5,8 +5,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinnamor Rolls - Let's Get Rolling</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5; 
+            color: #3e2723; 
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        header {
+            position: sticky;
+            top: 0;
+            background-color: #f1f1f1;
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h1 {
+            font-size: 2.5rem;
+            color: #2d2d2d;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #3e2723; 
+            padding: 10px 20px;
+            border: 2px solid #3e2723; 
+            border-radius: 15px; 
+            background-color: rgba(204, 153, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(204, 153, 102, 0.5);
+            color: #fff;
+        }
+
+        .hero {
+            background: url('path-to-image-or-video.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        .section-content {
+            padding: 60px 20px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            margin-top: 80px; 
+        }
+
+        .section-content.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        h2,
+        h3 {
+            font-size: 2rem;
+            color: #3e2723; 
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px; 
+            font-size: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background-color: rgba(144, 238, 144, 0.3); 
+            border: 2px solid #388e3c; 
+        }
+
+        .contact-form button {
+            background-color: #388e3c; 
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .contact-form button:hover {
+            background-color: #2c6e2f; 
+        }
+
+        .feedback {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.9rem;
+            color: #388e3c;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback .emoji {
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,59 +165,102 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#recipe">Recipe</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#impressum">Impressum</a></li>
+                    <li><a href="#about" onclick="showSection('about')">About Us</a></li>
+                    <li><a href="#recipe" onclick="showSection('recipe')">Recipe</a></li>
+                    <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+                    <li><a href="#impressum" onclick="showSection('impressum')">Impressum</a></li>
                 </ul>
             </nav>
         </header>
 
         <div class="hero">
-            <div class="slogan">
+            <div class="hero-content">
                 <h2>Let's Get Rolling</h2>
+                <p>Freshly baked and irresistibly delicious cinnamon rolls!</p>
             </div>
         </div>
 
-        <main>
-            <section id="about" class="about">
+        <main id="main-content">
+            <section id="about" class="section-content">
                 <h2>About Our Rolls</h2>
                 <p>Our Cinnamor Rolls are freshly baked, irresistibly delicious, and made with the finest ingredients. Perfect for any occasion, each roll is crafted with care and love!</p>
             </section>
 
-            <section id="recipe" class="recipe">
+            <section id="recipe" class="section-content">
                 <h2>Our Recipe</h2>
                 <div class="recipe-container">
                     <div class="ingredients">
                         <h3>Ingredients</h3>
                         <ul>
-                            <li>Flour: <span class="ingredient-amount" id="flour">500g</span></li>
-                            <li>Butter: <span class="ingredient-amount" id="butter">100g</span></li>
-                            <li>Sugar: <span class="ingredient-amount" id="sugar">150g</span></li>
-                            <li>Cinnamon: <span class="ingredient-amount" id="cinnamon">2 tbsp</span></li>
-                            <li>Yeast: <span class="ingredient-amount" id="yeast">1 tbsp</span></li>
-                            <li>Milk: <span class="ingredient-amount" id="milk">250ml</span></li>
-                            <li>Eggs: <span class="ingredient-amount" id="eggs">2</span></li>
+                            <li>Flour: <span id="flour">500g</span></li>
+                            <li>Butter: <span id="butter">100g</span></li>
+                            <li>Sugar: <span id="sugar">150g</span></li>
+                            <li>Cinnamon: <span id="cinnamon">2 tbsp</span></li>
+                            <li>Yeast: <span id="yeast">1 tbsp</span></li>
+                            <li>Milk: <span id="milk">250ml</span></li>
+                            <li>Eggs: <span id="eggs">2</span></li>
                         </ul>
                         <label for="servings">Number of Rolls:</label>
                         <input type="number" id="servings" value="12" onchange="updateRecipe()">
                     </div>
                     <div class="instructions">
                         <h3>Instructions</h3>
-                        <ol>
-                            <li>Mix the dry ingredients together.</li>
-                            <li>Add the milk, butter, and eggs.</li>
-                            <li>Knead the dough and let it rise for 1 hour.</li>
-                            <li>Roll out the dough, add cinnamon sugar, and roll it up.</li>
-                            <li>Cut into rolls and bake at 180°C for 25 minutes.</li>
-                        </ol>
+                        
+                        <div class="step">
+                            <div class="step-images">
+                                <img src="https://raw.githubusercontent.com/Abigail-LlanqueRomero/CinnamorRolls/main/Image/Mischen.jpg" alt="Mixing dry ingredients" width="30%">
+                              
+                            </div>
+                            <h4>1. Mix the dry ingredients together</h4>
+                            <p>Combine flour, sugar, cinnamon, and yeast in a large mixing bowl until evenly distributed.</p>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-images">
+                                <img src="https://raw.githubusercontent.com/Abigail-LlanqueRomero/CinnamorRolls/main/Image/Kneten.jpg" alt="Kneading dough" width="30%">
+                           
+                            </div>
+                            <h4>2. Add the milk, butter, and eggs</h4>
+                            <p>Pour warm milk, melted butter, and beaten eggs into the mixture. Knead the dough for 10 minutes until smooth and elastic. Cover and let rise in a warm place for 1 hour.</p>
+                        </div>
+            
+                        <div class="step">
+                            <div class="step-images">
+                                <img src="https://raw.githubusercontent.com/Abigail-LlanqueRomero/CinnamorRolls/main/Image/Bestreichung.jpg" alt="Rolling out dough" width="30%">
+                                <img src="https://raw.githubusercontent.com/Abigail-LlanqueRomero/CinnamorRolls/main/Image/Abdecken.jpg" alt="Rolling out dough" width="30%">
+                           
+                            </div>
+                            <h4>3. Roll out the dough</h4>
+                            <p>Roll the dough into a rectangular shape. Spread a layer of softened butter, then sprinkle generously with a mix of cinnamon and sugar.</p>
+                        </div>
+            
+                        <div class="step">
+                            <div class="step-images">
+                                <img src="https://raw.githubusercontent.com/Abigail-LlanqueRomero/CinnamorRolls/main/Image/Rollen.jpg" alt="Rolling up dough" width="30%">
+                
+                            </div>
+                            <h4>4. Roll up and cut</h4>
+                            <p>Roll the dough tightly from one side to form a log. Slice into even pieces, about 2 inches thick.</p>
+                        </div>
+            
+                        <div class="step">
+                            <div class="step-images">
+                                <img src="https://raw.githubusercontent.com/Abigail-LlanqueRomero/CinnamorRolls/main/Image/ungebacken.jpg" alt="Baking rolls" width="30%">
+                                <img src="https://raw.githubusercontent.com/Abigail-LlanqueRomero/CinnamorRolls/main/Image/WachsenImOfen.jpg" alt="Baking rolls" width="30%">
+                    
+                            </div>
+                            <h4>5. Bake and enjoy</h4>
+                            <p>Preheat the oven to 180°C (350°F). Place rolls onto a baking tray lined with parchment paper. Bake for 25 minutes or until golden brown. Let cool slightly before serving.</p>
+                        </div>
                     </div>
                 </div>
             </section>
+            
+            
 
-            <section id="contact" class="contact">
+            <section id="contact" class="section-content">
                 <h2>Contact Us</h2>
-                <form id="contact-form">
+                <form id="contact-form" class="contact-form">
                     <label for="first-name">First Name:</label>
                     <input type="text" id="first-name" name="first-name" required>
 
@@ -84,14 +275,17 @@
 
                     <button type="submit">Send</button>
                 </form>
-                <p id="confirmation" style="color: green; display: none;">Your message has been sent successfully!</p>
+                <div class="feedback">
+                    <span class="emoji">🌱</span>
+                    <span>We will grow from your feedback</span>
+                </div>
             </section>
 
-            <section id="impressum" class="impressum">
+            <section id="impressum" class="section-content">
                 <h3>Impressum</h3>
                 <p>Company: Cinnamor Rolls</p>
                 <p>Address: 123 Roll Street, 12345 Sweet City</p>
-                <p>CEO: Abigail</p>
+                <p>Abigail</p>
             </section>
         </main>
 
@@ -100,9 +294,7 @@
         </footer>
     </div>
 
-
     <script>
-
         function updateRecipe() {
             var servings = document.getElementById('servings').value;
 
@@ -123,11 +315,20 @@
             document.getElementById('eggs').innerText = Math.round(eggs) + " egg(s)";
         }
 
-        document.getElementById('contact-form').addEventListener('submit', function (e) {
-            e.preventDefault(); 
-            document.getElementById('confirmation').style.display = 'block';
-            document.getElementById('contact-form').reset(); 
-        });
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.section-content');
+            sections.forEach(function (section) {
+                section.classList.remove('visible'); 
+            });
+            var activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('visible'); 
+
+
+            activeSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start' 
+            });
+        }
     </script>
 </body>
 
