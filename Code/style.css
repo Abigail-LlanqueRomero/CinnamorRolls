@@ -69,9 +69,9 @@ nav ul li a:hover {
 }
 
 .section-content {
-  display: none; /* Hide all sections initially */
+  display: none; 
 }
 
 .section-content:not(.hidden) {
-  display: block; /* Show only the active section */
+  display: block; 
 }

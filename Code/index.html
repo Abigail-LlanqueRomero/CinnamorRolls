@@ -1,12 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinnamor Rolls - Let's Get Rolling</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5; 
+            color: #3e2723; 
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        header {
+            position: sticky;
+            top: 0;
+            background-color: #f1f1f1;
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h1 {
+            font-size: 2.5rem;
+            color: #2d2d2d;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #3e2723; 
+            padding: 10px 20px;
+            border: 2px solid #3e2723; 
+            border-radius: 15px; 
+            background-color: rgba(204, 153, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(204, 153, 102, 0.5);
+            color: #fff;
+        }
+
+        .hero {
+            background: url('path-to-image-or-video.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        .section-content {
+            padding: 60px 20px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            margin-top: 80px; 
+        }
+
+        .section-content.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        h2,
+        h3 {
+            font-size: 2rem;
+            color: #3e2723; 
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px; 
+            font-size: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background-color: rgba(144, 238, 144, 0.3); 
+            border: 2px solid #388e3c; 
+        }
+
+        .contact-form button {
+            background-color: #388e3c; 
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .contact-form button:hover {
+            background-color: #2c6e2f; 
+        }
+
+        .feedback {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.9rem;
+            color: #388e3c;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback .emoji {
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -31,13 +179,12 @@
         </div>
 
         <main id="main-content">
-
             <section id="about" class="section-content">
                 <h2>About Our Rolls</h2>
                 <p>Our Cinnamor Rolls are freshly baked, irresistibly delicious, and made with the finest ingredients. Perfect for any occasion, each roll is crafted with care and love!</p>
             </section>
 
-            <section id="recipe" class="section-content hidden">
+            <section id="recipe" class="section-content">
                 <h2>Our Recipe</h2>
                 <div class="recipe-container">
                     <div class="ingredients">
@@ -54,7 +201,6 @@
                         <label for="servings">Number of Rolls:</label>
                         <input type="number" id="servings" value="12" onchange="updateRecipe()">
                     </div>
-
                     <div class="instructions">
                         <h3>Instructions</h3>
                         <ol>
@@ -68,9 +214,9 @@
                 </div>
             </section>
 
-            <section id="contact" class="section-content hidden">
+            <section id="contact" class="section-content">
                 <h2>Contact Us</h2>
-                <form id="contact-form">
+                <form id="contact-form" class="contact-form">
                     <label for="first-name">First Name:</label>
                     <input type="text" id="first-name" name="first-name" required>
 
@@ -85,10 +231,13 @@
 
                     <button type="submit">Send</button>
                 </form>
-                <p id="confirmation" style="color: green; display: none;">Your message has been sent successfully!</p>
+                <div class="feedback">
+                    <span class="emoji">🌱</span>
+                    <span>We will grow from your feedback</span>
+                </div>
             </section>
 
-            <section id="impressum" class="section-content hidden">
+            <section id="impressum" class="section-content">
                 <h3>Impressum</h3>
                 <p>Company: Cinnamor Rolls</p>
                 <p>Address: 123 Roll Street, 12345 Sweet City</p>
@@ -101,9 +250,7 @@
         </footer>
     </div>
 
-
     <script>
-
         function updateRecipe() {
             var servings = document.getElementById('servings').value;
 
@@ -126,13 +273,19 @@
 
         function showSection(sectionId) {
             var sections = document.querySelectorAll('.section-content');
-            sections.forEach(function(section) {
-                section.classList.add('hidden'); 
+            sections.forEach(function (section) {
+                section.classList.remove('visible'); 
             });
-
             var activeSection = document.getElementById(sectionId);
-            activeSection.classList.remove('hidden'); 
+            activeSection.classList.add('visible'); 
+
+
+            activeSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start' 
+            });
         }
     </script>
 </body>
+
 </html>
