@@ -1,12 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CinnamorRolls</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinnamor Rolls - Let's Get Rolling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Cinnamor Rolls</h1>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Cinnamor Rolls</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#recipe">Recipe</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#impressum">Impressum</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero">
+            <div class="slogan">
+                <h2>Let's Get Rolling</h2>
+            </div>
+        </div>
+
+        <main>
+            <section id="about" class="about">
+                <h2>About Our Rolls</h2>
+                <p>Our Cinnamor Rolls are freshly baked, irresistibly delicious, and made with the finest ingredients. Perfect for any occasion, each roll is crafted with care and love!</p>
+            </section>
+
+            <section id="recipe" class="recipe">
+                <h2>Our Recipe</h2>
+                <div class="recipe-container">
+                    <div class="ingredients">
+                        <h3>Ingredients</h3>
+                        <ul>
+                            <li>Flour: <span class="ingredient-amount" id="flour">500g</span></li>
+                            <li>Butter: <span class="ingredient-amount" id="butter">100g</span></li>
+                            <li>Sugar: <span class="ingredient-amount" id="sugar">150g</span></li>
+                            <li>Cinnamon: <span class="ingredient-amount" id="cinnamon">2 tbsp</span></li>
+                            <li>Yeast: <span class="ingredient-amount" id="yeast">1 tbsp</span></li>
+                            <li>Milk: <span class="ingredient-amount" id="milk">250ml</span></li>
+                            <li>Eggs: <span class="ingredient-amount" id="eggs">2</span></li>
+                        </ul>
+                        <label for="servings">Number of Rolls:</label>
+                        <input type="number" id="servings" value="12" onchange="updateRecipe()">
+                    </div>
+                    <div class="instructions">
+                        <h3>Instructions</h3>
+                        <ol>
+                            <li>Mix the dry ingredients together.</li>
+                            <li>Add the milk, butter, and eggs.</li>
+                            <li>Knead the dough and let it rise for 1 hour.</li>
+                            <li>Roll out the dough, add cinnamon sugar, and roll it up.</li>
+                            <li>Cut into rolls and bake at 180°C for 25 minutes.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact">
+                <h2>Contact Us</h2>
+                <form id="contact-form">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name" required>
+
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+                <p id="confirmation" style="color: green; display: none;">Your message has been sent successfully!</p>
+            </section>
+
+            <section id="impressum" class="impressum">
+                <h3>Impressum</h3>
+                <p>Company: Cinnamor Rolls</p>
+                <p>Address: 123 Roll Street, 12345 Sweet City</p>
+                <p>CEO: Abigail</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Cinnamor Rolls. All rights reserved.</p>
+        </footer>
+    </div>
+
+
+    <script>
+
+        function updateRecipe() {
+            var servings = document.getElementById('servings').value;
+
+            var flour = 500 * (servings / 12);
+            var butter = 100 * (servings / 12);
+            var sugar = 150 * (servings / 12);
+            var cinnamon = 2 * (servings / 12);
+            var yeast = 1 * (servings / 12);
+            var milk = 250 * (servings / 12);
+            var eggs = 2 * (servings / 12);
+
+            document.getElementById('flour').innerText = flour.toFixed(2) + "g";
+            document.getElementById('butter').innerText = butter.toFixed(2) + "g";
+            document.getElementById('sugar').innerText = sugar.toFixed(2) + "g";
+            document.getElementById('cinnamon').innerText = cinnamon.toFixed(2) + " tbsp";
+            document.getElementById('yeast').innerText = yeast.toFixed(2) + " tbsp";
+            document.getElementById('milk').innerText = milk.toFixed(2) + "ml";
+            document.getElementById('eggs').innerText = Math.round(eggs) + " egg(s)";
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault(); 
+            document.getElementById('confirmation').style.display = 'block';
+            document.getElementById('contact-form').reset(); 
+        });
+    </script>
 </body>
+
 </html>

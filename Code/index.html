@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="container">
         <header>
@@ -17,43 +15,46 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#recipe">Recipe</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#impressum">Impressum</a></li>
+                    <li><a href="#about" onclick="showSection('about')">About Us</a></li>
+                    <li><a href="#recipe" onclick="showSection('recipe')">Recipe</a></li>
+                    <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+                    <li><a href="#impressum" onclick="showSection('impressum')">Impressum</a></li>
                 </ul>
             </nav>
         </header>
 
         <div class="hero">
-            <div class="slogan">
+            <div class="hero-content">
                 <h2>Let's Get Rolling</h2>
+                <p>Freshly baked and irresistibly delicious cinnamon rolls!</p>
             </div>
         </div>
 
-        <main>
-            <section id="about" class="about">
+        <main id="main-content">
+
+            <section id="about" class="section-content">
                 <h2>About Our Rolls</h2>
                 <p>Our Cinnamor Rolls are freshly baked, irresistibly delicious, and made with the finest ingredients. Perfect for any occasion, each roll is crafted with care and love!</p>
             </section>
 
-            <section id="recipe" class="recipe">
+            <section id="recipe" class="section-content hidden">
                 <h2>Our Recipe</h2>
                 <div class="recipe-container">
                     <div class="ingredients">
                         <h3>Ingredients</h3>
                         <ul>
-                            <li>Flour: <span class="ingredient-amount" id="flour">500g</span></li>
-                            <li>Butter: <span class="ingredient-amount" id="butter">100g</span></li>
-                            <li>Sugar: <span class="ingredient-amount" id="sugar">150g</span></li>
-                            <li>Cinnamon: <span class="ingredient-amount" id="cinnamon">2 tbsp</span></li>
-                            <li>Yeast: <span class="ingredient-amount" id="yeast">1 tbsp</span></li>
-                            <li>Milk: <span class="ingredient-amount" id="milk">250ml</span></li>
-                            <li>Eggs: <span class="ingredient-amount" id="eggs">2</span></li>
+                            <li>Flour: <span id="flour">500g</span></li>
+                            <li>Butter: <span id="butter">100g</span></li>
+                            <li>Sugar: <span id="sugar">150g</span></li>
+                            <li>Cinnamon: <span id="cinnamon">2 tbsp</span></li>
+                            <li>Yeast: <span id="yeast">1 tbsp</span></li>
+                            <li>Milk: <span id="milk">250ml</span></li>
+                            <li>Eggs: <span id="eggs">2</span></li>
                         </ul>
                         <label for="servings">Number of Rolls:</label>
                         <input type="number" id="servings" value="12" onchange="updateRecipe()">
                     </div>
+
                     <div class="instructions">
                         <h3>Instructions</h3>
                         <ol>
@@ -67,7 +68,7 @@
                 </div>
             </section>
 
-            <section id="contact" class="contact">
+            <section id="contact" class="section-content hidden">
                 <h2>Contact Us</h2>
                 <form id="contact-form">
                     <label for="first-name">First Name:</label>
@@ -87,7 +88,7 @@
                 <p id="confirmation" style="color: green; display: none;">Your message has been sent successfully!</p>
             </section>
 
-            <section id="impressum" class="impressum">
+            <section id="impressum" class="section-content hidden">
                 <h3>Impressum</h3>
                 <p>Company: Cinnamor Rolls</p>
                 <p>Address: 123 Roll Street, 12345 Sweet City</p>
@@ -123,12 +124,15 @@
             document.getElementById('eggs').innerText = Math.round(eggs) + " egg(s)";
         }
 
-        document.getElementById('contact-form').addEventListener('submit', function (e) {
-            e.preventDefault(); 
-            document.getElementById('confirmation').style.display = 'block';
-            document.getElementById('contact-form').reset(); 
-        });
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.section-content');
+            sections.forEach(function(section) {
+                section.classList.add('hidden'); 
+            });
+
+            var activeSection = document.getElementById(sectionId);
+            activeSection.classList.remove('hidden'); 
+        }
     </script>
 </body>
-
 </html>
