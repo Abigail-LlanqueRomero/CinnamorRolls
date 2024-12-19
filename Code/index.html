@@ -154,6 +154,12 @@
             padding: 20px;
             background-color: #f1f1f1;
         }
+        #confirmation {
+            font-size: 1.2rem;
+            color: green;
+            font-weight: bold;
+            display: none; 
+        }
     </style>
 </head>
 
@@ -212,7 +218,7 @@
                               
                             </div>
                             <h4>1. Mix the dry ingredients together</h4>
-                            <p>Combine flour, sugar, cinnamon, and yeast in a large mixing bowl until evenly distributed.</p>
+                            <p>Combine the flour, sugar, cinnamon, and yeast in a large mixing bowl until evenly distributed. Wait for 8-10 minutes until it forms a bit of foam.</p>
                         </div>
                         
                         <div class="step">
@@ -275,17 +281,16 @@
 
                     <button type="submit">Send</button>
                 </form>
-                <div class="feedback">
-                    <span class="emoji">🌱</span>
-                    <span>We will grow from your feedback</span>
-                </div>
-            </section>
+              
+            
+                    <div id="confirmation" style="display: none;"></div>
+                </section>
 
             <section id="impressum" class="section-content">
                 <h3>Impressum</h3>
                 <p>Company: Cinnamor Rolls</p>
                 <p>Address: 123 Roll Street, 12345 Sweet City</p>
-                <p>Abigail</p>
+                <p>CEO: Abigail</p>
             </section>
         </main>
 
@@ -293,43 +298,63 @@
             <p>&copy; 2024 Cinnamor Rolls. All rights reserved.</p>
         </footer>
     </div>
-
     <script>
+       document.getElementById('contact-form').addEventListener('submit', submitForm);
+
+function submitForm(event) {
+    event.preventDefault(); 
+    let confirmation = document.getElementById('confirmation');
+    
+    if (!confirmation) {
+        confirmation = document.createElement('p');
+        confirmation.id = 'confirmation';
+        confirmation.style.color = 'green';
+        confirmation.style.fontWeight = 'bold';
+        confirmation.style.marginTop = '15px';
+        
+        document.getElementById('contact-form').appendChild(confirmation);
+    }
+
+    confirmation.innerText = 'Thank you! Your message has been sent.';
+
+    document.getElementById('contact-form').reset();
+}
+
+    
         function updateRecipe() {
             var servings = document.getElementById('servings').value;
-
+            var ingredientScaling = servings / 12;
+    
             var flour = 500 * (servings / 12);
             var butter = 100 * (servings / 12);
-            var sugar = 150 * (servings / 12);
-            var cinnamon = 2 * (servings / 12);
+            var sugar = 80 * (servings / 12);
+            var cinnamon = 5 * (servings / 12);
             var yeast = 1 * (servings / 12);
-            var milk = 250 * (servings / 12);
             var eggs = 2 * (servings / 12);
-
+    
             document.getElementById('flour').innerText = flour.toFixed(2) + "g";
             document.getElementById('butter').innerText = butter.toFixed(2) + "g";
             document.getElementById('sugar').innerText = sugar.toFixed(2) + "g";
             document.getElementById('cinnamon').innerText = cinnamon.toFixed(2) + " tbsp";
             document.getElementById('yeast').innerText = yeast.toFixed(2) + " tbsp";
-            document.getElementById('milk').innerText = milk.toFixed(2) + "ml";
             document.getElementById('eggs').innerText = Math.round(eggs) + " egg(s)";
         }
-
+    
         function showSection(sectionId) {
             var sections = document.querySelectorAll('.section-content');
             sections.forEach(function (section) {
-                section.classList.remove('visible'); 
+                section.classList.remove('visible');
             });
             var activeSection = document.getElementById(sectionId);
-            activeSection.classList.add('visible'); 
-
-
+            activeSection.classList.add('visible');
+    
             activeSection.scrollIntoView({
                 behavior: 'smooth',
-                block: 'start' 
+                block: 'start'
             });
         }
     </script>
+    
 </body>
 
 </html>

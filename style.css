@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -64,7 +65,6 @@ nav ul li a:hover {
 
 .hero {
     background: url('https://raw.githubusercontent.com/Abigail-LlanqueRomero/CinnamorRolls/main/Image/ImOfen.jpg') no-repeat center center/cover;
-
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -116,11 +116,17 @@ h3 {
     color: #3e2723;
 }
 
+.step p {
+    font-size: 0.9rem; 
+    line-height: 1.5; 
+}
+
 .instructions {
     font-size: 1.2rem;
     margin-top: 40px;
     line-height: 1.7;
 }
+
 
 form {
     display: flex;
@@ -162,10 +168,12 @@ form button:hover {
 }
 
 #confirmation {
+    font-size: 1rem;
     color: green;
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: bold;
+    margin-top: 10px;
 }
+
 
 footer {
     padding: 20px;
@@ -188,6 +196,3 @@ footer {
     margin-left: 10px;
 }
 
-#feedback .emoji {
-    font-size: 1.5rem;
-}
