@@ -57,7 +57,7 @@
         nav ul li a {
             text-decoration: none;
             font-size: 1rem;
-            color: #3e2723; 
+            color: #3e2723;
             padding: 10px 20px;
             border: 2px solid #3e2723; 
             border-radius: 15px; 
@@ -105,7 +105,7 @@
         h2,
         h3 {
             font-size: 2rem;
-            color: #3e2723; 
+            color: #f9f8f8; 
         }
 
         .contact-form input,
@@ -182,14 +182,14 @@
         <div class="hero">
             <div class="hero-content">
                 <h2>Let's Get Rolling</h2>
-                <p>Freshly baked and irresistibly delicious cinnamon rolls!</p>
+                <p>Freshly baked and delicious cinnamon rolls!</p>
             </div>
         </div>
 
         <main id="main-content">
             <section id="about" class="section-content">
                 <h2>About Our Rolls</h2>
-                <p>Our Cinnamor Rolls are freshly baked, irresistibly delicious, and made with the finest ingredients. Perfect for any occasion, each roll is crafted with care and love!</p>
+                <p>Our Cinnamor Rolls are perfect for any occasion, each roll is crafted with care and love!</p>
             </section>
 
             <section id="recipe" class="section-content">
@@ -311,7 +311,6 @@ function submitForm(event) {
         confirmation.style.color = 'green';
         confirmation.style.fontWeight = 'bold';
         confirmation.style.marginTop = '15px';
-        
         document.getElementById('contact-form').appendChild(confirmation);
     }
 
@@ -340,7 +339,7 @@ function submitForm(event) {
             document.getElementById('eggs').innerText = Math.round(eggs) + " egg(s)";
         }
     
-        function showSection(sectionId) {
+        function showSection(sectionid){
             var sections = document.querySelectorAll('.section-content');
             sections.forEach(function (section) {
                 section.classList.remove('visible');
